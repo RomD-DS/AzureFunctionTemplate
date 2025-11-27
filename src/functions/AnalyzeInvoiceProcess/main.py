@@ -1,23 +1,21 @@
 import logging
-import time
 import azure.functions as func
+import time
 
-def main(mytimer: func.TimerRequest) -> None:
-    logging.info("Hello World Function started")
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info("HTTP trigger function started")
+    
     start = time.time()
 
     try:
-        logging.info("Doing Hello World work...")
-
-        # Hello World
         logging.info("HELLO WORLD 👋")
-
         duration = time.time() - start
-        logging.info(f"Hello World finished in {duration:.2f}s")
+
+        return func.HttpResponse(
+            f"HELLO WORLD 👋 (finished in {duration:.2f}s)",
+            status_code=200
+        )
 
     except Exception as e:
-        duration = time.time() - start
-        logging.error("ERROR in Hello World")
-        logging.error(f"Message: {str(e)}")
-        logging.exception("Traceback:")
-        logging.error(f"Process failed after {duration:.2f}s")
+        logging.error(f"Error: {str(e)}")
+        return func.HttpResponse("ERROR", status_code=500)
