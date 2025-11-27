@@ -1,0 +1,12 @@
+azure:
+  tenant_id: "TENANT_ID"
+  client_id: "CLIENT_ID"
+  client_secret: "CLIENT_SECRET"
+  mailbox: "support@sika.com"
+  folder_archive: "Archive"
+  foilder_mail: "INBOX"
+
+mongodb:
+  uri: "mongodb+srv://user:password@cluster0.mongodb.net/mydatabase?retryWrites=true&w=majority" 
+  database: "EmailIngestionDB"
+  collection: "Invoices"
