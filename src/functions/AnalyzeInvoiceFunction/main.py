@@ -1,38 +1,23 @@
 import logging
-import traceback
-
 import time
 import azure.functions as func
 
-
-def main() -> None:
-
-    logging.info("Analyze Invoices Process started")
+def main(mytimer: func.TimerRequest) -> None:
+    logging.info("Hello World Function started")
     start = time.time()
 
     try:
-        logging.info("Running invoice analysis...")
+        logging.info("Doing Hello World work...")
 
-        # Met le code
-        page = get_page()
-        #### Function LLM Process
-
-        result = llm_process()
-
-        ### Save In MongoDB 
-        save_mongodb(result)
-
+        # Hello World
+        logging.info("HELLO WORLD 👋")
 
         duration = time.time() - start
-        logging.info(f"Analyze Invoices Process finished in {duration:.2f}s")
-
-        return "OK"
+        logging.info(f"Hello World finished in {duration:.2f}s")
 
     except Exception as e:
         duration = time.time() - start
-        logging.error("ERROR in Analyze Invoices Process")
+        logging.error("ERROR in Hello World")
         logging.error(f"Message: {str(e)}")
-        logging.error("Traceback:")
-        logging.error(traceback.format_exc())
+        logging.exception("Traceback:")
         logging.error(f"Process failed after {duration:.2f}s")
-        return "ERROR"

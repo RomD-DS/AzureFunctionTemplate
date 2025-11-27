@@ -1,0 +1,2 @@
+tqdm==4.66.1
+azure-functions==1.17.0
