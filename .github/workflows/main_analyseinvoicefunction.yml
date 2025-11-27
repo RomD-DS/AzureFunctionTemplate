@@ -40,7 +40,8 @@ jobs:
       # Optional: Add step to run tests here
 
       - name: Zip artifact for deployment
-        run: zip release.zip src/functions/AnalyseInvoiceProcess/*
+        run: cd src/functions/AnalyzeInvoiceProcess && zip -r ../../../release.zip .
+
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
